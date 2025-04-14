@@ -1,0 +1,204 @@
+---
+layout: article-layout.njk
+tags:
+- article
+- databases
+- postgresql
+title: How to setup and secure a self-managed PostgreSQL database on a GCP VM Instance
+---
+
+<h3>Notes:</h3>
+<ul>
+    <li>
+        <p>
+            <span class="list-marker">↪</span>
+            <span class="code-embed">{}</span> refers to your own configuration
+            variables. Do not blindly copy and paste!
+        </p>
+    </li>
+    <li>
+        <p>
+            <span class="list-marker">↪</span>
+            <strong>Never</strong> allow all addresses to access your VM or database! Even if your credentials seem
+            safe, if they get leaked, proper configuration and firewalls are your safety net.
+        </p>
+    </li>
+    <li>
+        <p>
+            <span class="list-marker">↪</span>
+            Even when learning, following simple security guidelines helps you build good habits, making it more likely
+            you'll follow them when it counts in a professional setting.
+        </p>
+    </li>
+</ul>
+
+<ol>
+    <li>
+        <h2>1. Create the Compute Instance</h2>
+
+        <p>Search -> VM Instances -> Create Instance</p>
+
+        <ul>
+            <li>Zone: Pick one closest to you or your other services</li>
+            <li>Machine Type -> E2 Micro is the cheapest</li>
+        </ul>
+    </li>
+
+    <li>
+        <h2>2. Create the disk</h2>
+
+        <p>Search -> VM Instances -> postgres -> edit</p>
+        <p>Additional Disks -> Add new disk</p>
+
+        <ul>
+            <li>Name -> postgres</li>
+            <li>Disk type -> SSD Persistent Disk</li>
+            <li>Size -> The minimum of 10GB for this example is fine</li>
+        </ul>
+    </li>
+
+    <li>
+        <h2>3. Configure network</h2>
+
+        <p>Firewalls -> 'Allow HTTPS Traffic'</p>
+        <p>Network Tags: 'postgres'</p>
+    </li>
+
+    <li>
+        <h2>4. Configure firewall</h2>
+
+        <p>Search -> Firewall -> Create firewall rule</p>
+        <br>
+
+        <ul>
+            <li>Name -> 'allow-postgres'</li>
+            <li>Target tags -> 'postgres'</li>
+            <li>Protocols and ports -> 'TCP' -> 5432</li>
+            <li>Source IPv4 ranges -> Your personal IP (and website domain if applicable)</li>
+        </ul>
+        <br>
+
+        <div class="code-snippet">
+            # To get your local PC IP:<br>
+            curl ifconfig.me<br>
+            <br>
+            # To get your website domain IP:<br>
+            nslookup yourdomain.com<br>
+        </div>
+
+        <p><em>If you have IP rotation you will have to connect via a static IP bastion/VPN</em></p>
+    </li>
+
+    <li>
+        <h2>5. Install PostgreSQL</h2>
+
+        <div class="code-snippet">
+            sudo apt-get update
+            sudo apt install postgresql
+        </div>
+    </li>
+
+    <li>
+        <h2>6. Create a secure system password for 'postgres' user</h2>
+
+        <div class="code-snippet">
+            sudo passwd postgres
+        </div>
+    </li>
+
+    <li>
+        <h2>7. Transfer database to the SSD persistent disk mount</h2>
+
+        <div class="code-snippet">
+            sudo mv /var/lib/postgresql/{version}/main /mnt/postgres/data
+        </div>
+    </li>
+
+    <li>
+        <h2>8. Create symlink for the database to the disk mount</h2>
+
+        <div class="code-snippet">
+            sudo ln -s /mnt/postgres/data /var/lib/postgresql/{version}/main
+        </div>
+    </li>
+
+    <li>
+        <h2>9. Assign ownership to postgres at the new location</h2>
+
+        <div class="code-snippet">
+            sudo chown -R postgres:postgres /mnt/postgres/data
+        </div>
+    </li>
+
+    <li>
+        <h2>10. Update pg_hba.conf</h2>
+
+        <div class="code-snippet">
+            sudo nano /etc/postgresql/{version}/main/pg_hba.conf
+        </div>
+
+        <p>Make the following changes:</p>
+        <br>
+        <ul>
+            <li><span class="list-marker">↪</span> Change the IPv4 connection address to <span
+                    class="code-embed">0.0.0.0/0</span></li>
+            <li><span class="list-marker">↪</span> Change the IPv6 connection address to <span
+                    class="code-embed">::/0</span></li>
+            <li><span class="list-marker">↪</span> Change the IPv4 and IPv6 connection method to <span
+                    class="code-embed">md5</span></li>
+        </ul>
+    </li>
+
+    <li>
+        <h2>11. Update postgresql.conf</h2>
+
+        <div class="code-snippet">
+            sudo nano /etc/postgresql/{version}/main/postgresql.conf
+        </div>
+
+        <p>Set <span class="code-embed">listen_addresses = '*'</span></p>
+    </li>
+
+    <li>
+        <h2>12. Start and verify the PostgreSQL Service</h2>
+
+        <div class="code-snippet">
+            sudo systemctl start postgresql<br>
+            sudo systemctl status postgresql
+        </div>
+    </li>
+
+    <li>
+        <h2>13. Configure Database User and Connection</h2>
+
+        <div class="code-snippet">
+            # Activate user 'postgres' and initialize the PostgreSQL CLI<br>
+            psql<br>
+            <br>
+            # Set a password for user 'postgres' in the database<br>
+            ALTER USER postgres WITH PASSWORD '{password}';<br>
+            <br>
+            # Create a new database and connect to it<br>
+            CREATE DATABASE {db};<br>
+            \c {db}<br>
+            <br>
+            # Exit the CLI back to default user<br>
+            \q<br>
+            exit<br>
+            <br>
+            # Verify local database connection<br>
+            psql -U postgres -d {db} -h localhost -W<br>
+        </div>
+    </li>
+
+    <li>
+        <h2>14. Verify external database connection</h2>
+
+        <p>Find the IP address associated with the Compute Instance</p>
+        <p>Search -> VM Instances -> External IP</p><br>
+
+        <div class="code-snippet">
+            psql "dbname={db} user=postgres host={ip} sslmode=require"
+        </div>
+    </li>
+</ol>

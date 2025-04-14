@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/res/bundle.css">
+    <title>{{ title }}</title>
+    <link rel="icon" href="res/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li class="nav-item">
+                <a href="/" class="nav-link {% if page.url === '/' %}active{% endif %}">
+                    {% if page.url === '/' %} &lt; HOME &gt; {% else %} &nbsp;&nbsp; HOME &nbsp;&nbsp; {% endif %}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/projects"
+                    class="nav-link {% if page.url and page.url.includes('/projects') %}active{% endif %}">
+                    {% if page.url and page.url.includes('projects') %} &lt; PROJECTS &gt; {% else %} &nbsp;&nbsp;
+                    PROJECTS &nbsp;&nbsp; {% endif %}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/articles"
+                    class="nav-link {% if page.url and page.url.includes('/articles') %}active{% endif %}">
+                    {% if page.url and page.url.includes('articles') %} &lt; ARTICLES &gt; {% else %} &nbsp;&nbsp;
+                    ARTICLES &nbsp;&nbsp; {% endif %}
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <hr class="main-hr">
+    <main>
+        {% block content %}
+        {{ content | safe }}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 saragarcia.dev</p>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+    <script src="/script.js"></script>
+</body>
+
+</html>

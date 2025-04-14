@@ -1,0 +1,203 @@
+---
+layout: article-layout.njk
+tags:
+- article
+- security
+title: Password Security Best Practices - Beyond Basic Hashing
+---
+
+<h3>Notes:</h3>
+<ul>
+    <li>
+        <p>
+            <span class="list-marker">↪</span>
+            Security is only as strong as its weakest link. No single technique will protect you completely.
+        </p>
+    </li>
+    <li>
+        <p>
+            <span class="list-marker">↪</span>
+            Never try to write your own password hashing algorithms or validation systems. Use established libraries.
+        </p>
+    </li>
+    <li>
+        <p>
+            <span class="list-marker">↪</span>
+            Even with perfect implementation, weak passwords remain vulnerable regardless of hashing techniques.
+        </p>
+    </li>
+</ul>
+
+<ol>
+    <li>
+        <h2>1. The Problem With Plain Hashing</h2>
+
+        <p>Regular hashing always produces the same output for the same input since the algorithm is a deterministic
+            mathematical function. This means the password "password" hashed with SHA256 will always produce "5e884898
+            etc...". This makes passwords, especially weaker ones, vulnerable to lookup attacks using precomputed hash
+            databases like rainbow tables.</p>
+
+        <p>A rainbow table is a giant list of common or simple passwords and their corresponding hashes. Attackers can
+            simply search for a known hash and find the original password.</p>
+    </li>
+
+    <li>
+        <h2>2. Salt: Your Password's Best Friend</h2>
+
+        <p>Salt prevents this by adding a unique, random value to each password before hashing. With salt, even if two
+            users have the same password, their hashes are different since their salts are different.</p>
+
+        <p>The system stores this salt alongside the hashed password. When a user logs in, the system retrieves the
+            stored salt, hashes the entered password with it, and checks if the result matches the stored hash.</p>
+
+        <p>Authentication is only possible with both the salt and the hash, adding an extra layer of security. While
+            salts don't prevent brute-force attacks entirely, they slow them down significantly by forcing attackers to
+            compute hashes separately for each password attempt per user, making large-scale attacks impractical.</p>
+    </li>
+
+    <li>
+        <h2>3. Salt Isn't Magic: What It Can't Protect Against</h2>
+
+        <p>Even with salting, not all security measures are created equal:</p>
+        <br>
+        <ul>
+            <li><span class="list-marker">↪</span> <strong>Weak algorithms = useless security</strong>: SHA1 is
+                practically worthless at this point -
+                collision attacks have proven it broken beyond repair.</li>
+            <br>
+            <li><span class="list-marker">↪</span> <strong>Garbage in, garbage out</strong>: No amount of salting will
+                save truly weak passwords. If your
+                password is "123456" or "qwerty", you're basically handing over the keys regardless of how it's hashed
+                and salted.</li>
+            <br>
+            <li><span class="list-marker">↪</span> <strong>Brute force still works</strong>: Even billions of hashes per
+                second, brute-force attacks on
+                strong passwords can take years, not just days, especially when combined with slow hashing algorithms
+                like bcrypt, scrypt, or Argon2.</li>
+        </ul>
+    </li>
+
+    <li>
+        <h2>4. Beyond Password Storage: The Full Security Picture</h2>
+
+        <p>The most secure password database means nothing if your app has other vulnerabilities:</p>
+        <br>
+        <ul>
+            <li><span class="list-marker">↪</span> <strong>Injection attacks</strong>: SQL injection, command injection,
+                and path traversal can bypass
+                authentication entirely.</li>
+            <li><span class="list-marker">↪</span> <strong>Poor front-end validation</strong>: If you're not sanitizing
+                inputs and preventing injection
+                attacks, your carefully salted and hashed passwords won't matter.</li>
+            <li><span class="list-marker">↪</span> <strong>Lack of Two-factor authentication (2FA)</strong>: Implement
+                2FA as an additional security layer
+                so that even if everything else goes wrong, you still have a backup.</li>
+        </ul>
+    </li>
+
+    <li>
+        <h2>5. DON'T Try This At Home</h2>
+
+        <p>Never try to write your own password hashing algorithms or validation systems. Seriously. Security experts
+            with decades of experience struggle to get this stuff right. Use established libraries and frameworks that
+            have been thoroughly tested and vetted by the security community.</p>
+    </li>
+
+    <li>
+        <h2>6. The Regex Trap</h2>
+
+        <p>Avoid complex regex for security validation whenever possible. Regular expressions are notoriously difficult
+            to get right and often create unintended security holes. They're especially dangerous when used for input
+            validation, as regex denial of service (ReDoS) attacks can bring your system to a halt. One tiny mistake in
+            a regex pattern can either let malicious input through or block legitimate users.</p>
+    </li>
+
+    <li>
+        <h2>7. Vibe Coding Security == No Security</h2>
+
+        <p>AI-assisted "vibe coding" presents serious security risks. When you ask an AI to generate authentication
+            code, it often produces vulnerable implementations by default. A classic example is suggesting code that
+            reveals which credential was wrong ("username not found" vs "password incorrect"), helping attackers
+            enumerate valid accounts.</p>
+
+        <p>AI models prioritise functioning code over secure code, missing critical edge cases that attackers
+            specifically target. Authentication, encryption, and access control systems require careful implementation
+            that vibe coding typically bypasses. This makes skilled cybersecurity professionals more valuable than ever.
+        </p>
+    </li>
+
+    <li>
+        <h2>8. What About Quantum Computing?</h2>
+
+        <p>Quantum computing poses a future risk but won't make hashing obsolete overnight. Current quantum algorithms
+            like Grover's algorithm speed up brute-force attacks, but only by a square root factor. If breaking a hash
+            today takes 1000 years, a quantum computer could reduce it to ~32 years - still a long time (at least for
+            strong passwords).</p>
+
+        <p>Public-key cryptography faces bigger problems from quantum attacks, as Shor's algorithm provides an
+            exponential speedup that could break PKC once quantum computers reach sufficient scale.</p>
+    </li>
+
+    <li>
+        <h2>9. Security Checklist</h2>
+
+        <p>Don't be stupid. Security requires both proper backend implementation and solid frontend validation. No
+            single technique will save you - security is only as strong as its weakest link.</p>
+
+        <br>
+        <br>
+        <h3>DOS:</h3>
+        <br>
+        <ul>
+            <li><span class="list-marker">↪</span> Implement minimum password requirements</li>
+            <li><span class="list-marker">↪</span> Use modern algorithms like Argon2 - and stay up to date with newer
+                ones!</li>
+            <li><span class="list-marker">↪</span> Validate inputs with pre-built libraries</li>
+            <li><span class="list-marker">↪</span> Implement 2FA</li>
+            <li><span class="list-marker">↪</span> Alert users of new logins or login attempts</li>
+            <li><span class="list-marker">↪</span> Use HTTPS</li>
+        </ul>
+
+        <br>
+        <h3>DON'TS:</h3>
+        <br>
+        <ul>
+            <li><span class="list-marker">↪</span> Write your own security code</li>
+            <li><span class="list-marker">↪</span> Use regex for password validation</li>
+            <li><span class="list-marker">↪</span> Use outdated security algorithms</li>
+            <li><span class="list-marker">↪</span> Store passwords as plain text</li>
+            <li><span class="list-marker">↪</span> Trust AI-generated code without proper review</li>
+            <li><span class="list-marker">↪</span> Hardcode credentials in source code</li>
+        </ul>
+    </li>
+
+    <li>
+        <h2>10. Bottom Line</h2>
+
+        <p>The rise of AI coding tools makes security professionals more essential than ever - people who understand the
+            nuances of secure implementation and can spot subtle vulnerabilities. Remember that security is a
+            comprehensive approach where each component matters, and cutting corners inevitably creates exploitable
+            weaknesses.</p>
+
+        <p>As you may have heard, here is a classic developer meme to finish off this post...</p>
+
+        <p><strong>No one will remember:</strong></p>
+        <br>
+        <ul>
+            <li><span class="list-marker">↪</span> Your salary</li>
+            <li><span class="list-marker">↪</span> Your job title</li>
+            <li><span class="list-marker">↪</span> How many hours you worked</li>
+        </ul>
+
+        <p><strong>But everyone will remember:</strong></p>
+        <br>
+        <ul>
+            <li><span class="list-marker">↪</span> That time you took down production</li>
+            <li><span class="list-marker">↪</span> The security vulnerability you introduced</li>
+            <li><span class="list-marker">↪</span> The bug that cost the company millions</li>
+        </ul>
+
+        <p>So yeah, don't be that guy, and do security right for a change. Your boss will be proud, and your mom will be
+            too.</p>
+    </li>
+</ol>

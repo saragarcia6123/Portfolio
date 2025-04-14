@@ -1,0 +1,97 @@
+---
+layout: article-layout.njk
+tags:
+- article
+- databases
+- postgresql
+- automation
+title: How to automate PostgreSQL Database backup with pg_dumps and Cron
+---
+
+
+<h3>Notes:</h3>
+<ul>
+    <li>
+        <p>
+            <span class="list-marker">↪</span>
+            <span class="code-embed">{}</span> refers to your own configuration
+            variables. Do not blindly copy and paste!
+        </p>
+    </li>
+    <li>
+        <p>
+            <span class="list-marker">↪</span>
+            Cron runs in a non-interactive environment and does not automatically expand <span
+                class="code-embed">~</span> to the home directory.
+            Always use
+            full paths i.e. <span class="code-embed">/home/username</span>
+        </p>
+    </li>
+</ul>
+
+<ol>
+    <li>
+        <h2>1. Create a <span class="code-embed">.pgpass</span> file and backups directory</h2>
+
+
+        <div class="code-snippet">
+            echo {db_host}:{db_port}:{db_name}:{db_user}:{db_password} >> ~/.pgpass
+            <br>
+            chmod 600 ~/.pgpass
+            <br>
+            mkdir -p ~/backups
+        </div>
+    </li>
+
+    <li>
+        <h2>2. Write the pg_dump script</h2>
+
+        <div class="code-snippet">
+            nano ~/run_pg_dump.sh
+        </div>
+
+        <div class="code-snippet">
+            #!/bin/bash<br>
+            <br>
+            hostname="{db_host}"<br>
+            username="{db_user}"<br>
+            database="{db_name}"<br>
+            timestamp=$(date +"%Y-%m-%d_%H-%M-%S")<br>
+            <br>
+            output_file="/home/{user}/backups/backup_$timestamp.dump" # Include timestamp<br>
+            latest_backup="/home/{username}/backups/latest.dump"<br>
+            <br>
+            pg_dump -h "$hostname" -U "$username" -d "$database" -F c -f "$output_file"<br>
+            <br>
+            # Keep track of latest<br>
+            cp "$output_file" "$latest_backup" # Set the latest backup<br>
+            <br>
+            # Keep only latest 3<br>
+            ls -tp /home/{user}/backups/*.dump | grep -v '/$' | tail -n +4 | xargs -r rm --
+        </div>
+    </li>
+
+    <li>
+        <h2>3. Schedule script execution and logging</h2>
+
+        <div class="code-snippet">
+            crontab -e
+        </div>
+
+        <div class="code-snippet">
+            0 0 * * * sudo PGPASSFILE=/home/{username}/.pgpass /home/{username}/run_pg_dump.sh >>
+            /home/{username}/backups/pg_dump.log 2>&1
+        </div>
+
+        <p>This will run <span class="code-embed">pg_dump</span> every midnight and log the output to the end of <span
+                class="code-embed">pgdump.log</span></p>
+    </li>
+
+    <li>
+        <h2>4. Restoring from dump</h2>
+
+        <div class="code-snippet">
+            pg_restore -h {db_host} -U {db_user} -d {db_name} -F c ~/backups/latest.dump
+        </div>
+    </li>
+</ol>

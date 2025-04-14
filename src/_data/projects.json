@@ -1,0 +1,201 @@
+[
+    {
+        "name": "Meteorology Dashboard",
+        "url": "https://proyectometeorologico.streamlit.app/ML-Modelos",
+        "description": "Spanish Weather Data Analysis Dashboard with AEMET API featuring ML predictions for daily temperature forecast.",
+        "tags": [
+            "ML",
+            "Keras",
+            "FastAPI",
+            "PostgreSQL",
+            "Supabase",
+            "Streamlit",
+            "Python",
+            "API"
+        ]
+    },
+    {
+        "name": "Billboard Music ETL",
+        "url": "https://github.com/saragarcia6123/Music-ETL",
+        "description": "Data Exploration of music trends and sentiment analysis in popular music using charts, song data and lyrics.",
+        "tags": [
+            "ML",
+            "DataScience",
+            "Python",
+            "Streamlit",
+            "PyTorch",
+            "BeautifulSoup"
+        ]
+    },
+    {
+        "name": "Iris Predictions",
+        "url": "https://github.com/saragarcia6123/ML-Predictions",
+        "description": "Containerized full-stack app with remote database and file hosting with ML predictions served with FastAPI and fetched from Streamlit.",
+        "tags": [
+            "ML",
+            "DevOps",
+            "Python",
+            "FastAPI",
+            "Streamlit",
+            "Docker",
+            "GCP",
+            "PostgreSQL"
+        ]
+    },
+    {
+        "name": "Expression Evaluator",
+        "url": "https://github.com/saragarcia6123/expression_evaluator",
+        "description": "A calculator-style mathematical expression evaluator that parses and computes results from user input strings.",
+        "tags": [
+            "Mathematics",
+            "DataStructures",
+            "Algorithms",
+            "Parsing",
+            "Compilers"
+        ]
+    },
+    {
+        "name": "PySpark Classification",
+        "url": "https://github.com/saragarcia6123/PySpark-Classification",
+        "description": "Heart Disease Prediction in PySpark using various Classification models.",
+        "tags": [
+            "ML",
+            "PySpark",
+            "Python",
+            "Jupyter"
+        ]
+    },
+    {
+        "name": "Audio Recorder Visualizer",
+        "url": "https://github.com/saragarcia6123/audio-recorder-visualizer",
+        "description": "A collection of classes for incorporating a sophisticated live audio recording visualizer into Jetpack Compose projects. I made this for an app as part of my Work Experience.",
+        "tags": [
+            "Kotlin",
+            "Android",
+            "JetpackCompose",
+            "AudioProcessing"
+        ]
+    },
+    {
+        "name": "NoteLab",
+        "url": "https://github.com/saragarcia6123/NoteLab",
+        "description": "Experimental Backend for Data analysis and API interaction with Flask and SQLite.",
+        "tags": [
+            "Flask",
+            "SQLite",
+            "Python",
+            "Poetry",
+            "Bash"
+        ]
+    },
+    {
+        "name": "OBS Live Subtitles",
+        "url": "https://github.com/saragarcia6123/obs-live-subtitles",
+        "description": "A live subtitle generator for OBS using OpenAI's Whisper API.",
+        "tags": [
+            "Pygame",
+            "Python",
+            "OpenAI",
+            "API",
+            "AudioProcessing"
+        ]
+    },
+    {
+        "name": "Keras Car Price Regression",
+        "url": "https://github.com/saragarcia6123/Keras-Regression",
+        "description": "Car Price Regression Model in Jupyter using Keras neural networks ",
+        "tags": [
+            "ML",
+            "Keras",
+            "NeuralNetworks",
+            "Jupyter",
+            "Python"
+        ]
+    },
+    {
+        "name": "Django-folio",
+        "url": "https://github.com/saragarcia6123/django-gcp-postgres",
+        "description": "Showcasing how to setup a containerized backend django app with remote persistent database and gcp media and static file hosting ",
+        "tags": [
+            "Django",
+            "DevOps",
+            "PostgreSQL",
+            "GCP",
+            "Docker",
+            "Python",
+            "Bash"
+        ]
+    },
+    {
+        "name": "Staking Game",
+        "url": "https://github.com/saragarcia6123/staking-game",
+        "description": "A game made with solidity where users can stake amounts and earn rewards.",
+        "tags": [
+            "Solidity",
+            "Foundry",
+            "Blockchain",
+            "OpenZeppelin",
+            "DeFi"
+        ]
+    },
+    {
+        "name": "KNN Recreation",
+        "url": "https://github.com/saragarcia6123/KNN",
+        "description": "A recreation of SciKit Learn's KNN with BallTree and KDTree data structures.",
+        "tags": [
+            "ML",
+            "DataStructures",
+            "Algorithms",
+            "Numpy",
+            "Python",
+            "ComputerScience"
+        ]
+    },
+    {
+        "name": "Interior Designer",
+        "url": "https://github.com/saragarcia6123/InteriorDesigner",
+        "description": "IB coursework of an Interior Designer utilising my own Game Engine written from scratch in Java.",
+        "tags": [
+            "Java",
+            "DataStructures",
+            "Algorithms",
+            "ComputerScience",
+            "GameEngine"
+        ]
+    },
+    {
+        "name": "Housing ETL",
+        "url": "https://github.com/saragarcia6123/Housing-ETL",
+        "description": "ETL Pipeline of housing data from RightMove UK with custom database manager class.",
+        "tags": [
+            "Python",
+            "WebScraping",
+            "DataScience",
+            "BeautifulSoup",
+            "Databases"
+        ]
+    },
+    {
+        "name": "Twitter Bot",
+        "url": "https://github.com/saragarcia6123/twitter-bot",
+        "description": "A Twitter post bot that reads from Google Sheets.",
+        "tags": [
+            "Python",
+            "Bot",
+            "API",
+            "GCP",
+            "Parsing"
+        ]
+    },
+    {
+        "name": "Coteria",
+        "url": "https://github.com/saragarcia6123/coteria",
+        "description": "A Flutter application for meeting like-minded people.",
+        "tags": [
+            "Flutter",
+            "Firebase",
+            "MobileApp",
+            "Databases"
+        ]
+    }
+]

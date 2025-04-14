@@ -1,0 +1,11 @@
+---
+layout: layout.njk
+title: Articles
+---
+<div class="articles-content page-content">
+    {% for article in collections.article %}
+    <a class="search-result" href="{{ article.url }}">
+        {{ article.data.title }}
+    </a>
+    {% endfor %}
+</div>
