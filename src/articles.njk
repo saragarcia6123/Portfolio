@@ -5,7 +5,9 @@ title: Articles
 <div class="articles-content page-content">
     {% for article in collections.article %}
     <a class="search-result" href="{{ article.url }}">
-        {{ article.data.title }}
+        <p>
+            {{ article.data.title }}
+        </p>
     </a>
     {% endfor %}
 </div>
