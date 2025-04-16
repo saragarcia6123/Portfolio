@@ -20,7 +20,7 @@ title: Home
                 </div>
                 <div class="info-container">
                     <p class="name">SARA GARCIA</p>
-                    <p>Software Developer</p>
+                    <p>Backend Python Developer</p>
                 </div>
                 <div class="bracket bracket-right">
                     <p>}</p>
@@ -38,25 +38,40 @@ title: Home
             </div>
         </div>
     </div>
-    <div id="social-icons">
-        <a class="badge social-icon" target="_blank" href="https://github.com/saragarcia6123">
-            <div class="icon-container github-logo">
-                <img src="res/icons/github.svg">
-            </div>
-            <p>GITHUB</p>
-        </a>
-        <a class="badge social-icon" target="_blank" href="https://linkedin.com/in/saragarcia6123">
-            <div class="icon-container linkedin-logo">
-                <img src="res/icons/linkedin.svg">
-            </div>
-            <p>LINKEDIN</p>
-        </a>
-        <a class="badge social-icon" target="_blank" href="mailto:saragarcia6123@gmail.com">
-            <div class="icon-container email-icon">
-                <img src="res/icons/email.svg">
-            </div>
-            <p>EMAIL</p>
-        </a>
+    <div class="intro">
+        <p>
+            Self-taught software engineer with a focus on building things that not only work well, but stay
+            secure, flexible and maintainable. I enjoy problem-solving and making complex systems simple.
+        </p>
+    </div>
+    <div class="quote-container">
+        <div class="quote">
+            <p>I’m not just about getting things to run;</p>
+            <p>I care about clean, efficient, and scalable solutions.</p>
+        </div>
+    </div>
+    <div class="socials">
+        <h3 style="font-style: italic;">Let's connect... </h3>
+        <div id="social-icons">
+            <a class="badge social-icon" target="_blank" href="https://github.com/saragarcia6123">
+                <div class="icon-container github-logo">
+                    <img src="res/icons/github.svg">
+                </div>
+                <p>GITHUB</p>
+            </a>
+            <a class="badge social-icon" target="_blank" href="https://linkedin.com/in/saragarcia6123">
+                <div class="icon-container linkedin-logo">
+                    <img src="res/icons/linkedin.svg">
+                </div>
+                <p>LINKEDIN</p>
+            </a>
+            <a class="badge social-icon" target="_blank" href="mailto:saragarcia6123@gmail.com">
+                <div class="icon-container email-icon">
+                    <img src="res/icons/email.svg">
+                </div>
+                <p>EMAIL</p>
+            </a>
+        </div>
     </div>
     <hr class="hr-splitter">
     <div class="technologies">
@@ -66,22 +81,13 @@ title: Home
                 &lt; {{ groupName | upper }} &gt;
             </div>
             <div class="badges">
-                {% for tech, level in technologies %}
-                <a class="badge tech-badge level-{{ level }}">
+                {% for tech in technologies %}
+                <a class="badge tech-badge">
                     <div class="icon-container">
                         <img src="/res/icons/{{ tech | lower }}.svg">
                     </div>
                     <div class="badge-name">
                         <p>{{ tech }}</p>
-                        <p class="skill-level">
-                            {% if level == 1 %}
-                            ★
-                            {% elif level == 2 %}
-                            ★★
-                            {% elif level == 3 %}
-                            ★★★
-                            {% endif %}
-                        </p>
                     </div>
                 </a>
                 {% endfor %}
@@ -91,10 +97,10 @@ title: Home
     </div>
     <div class="quote-container">
         <div class="quote">
-            <p>"Whether it's Solidity or Scratch, in the end it's all just problem-solving."</p>
+            <p>"An idiot admires complexity, a genius admires simplicity."</p>
         </div>
         <div class="author">
-            <p>- Me</p>
+            <p>- Terry Davis</p>
         </div>
     </div>
 </div>

@@ -1,60 +1,16 @@
 {
     "groups": {
-        "tools": {
-            "Git": 3,
-            "Linux": 3,
-            "Bash": 3,
-            "Docker": 2,
-            "GCP": 2
-        },
-        "backend": {
-            "Python": 3,
-            "Java": 3,
-            "FastAPI": 3,
-            "Flask": 2,
-            "Django": 2
-        },
-        "frontend": {
-            "HTML": 3,
-            "CSS": 3,
-            "Javascript": 2,
-            "Typescript": 2,
-            "Streamlit": 3
-        },
-        "databases": {
-            "Postgres": 3,
-            "MySQL": 2,
-            "SQLite": 2,
-            "Supabase": 3,
-            "Firebase": 2
-        },
-        "data science": {
-            "Pandas": 3,
-            "Numpy": 3,
-            "Matplotlib": 3,
-            "Plotly": 3,
-            "Seaborn": 3
-        },
-        "machine learning": {
-            "SkLearn": 3,
-            "Keras": 3,
-            "PyTorch": 2,
-            "Tensorflow": 1,
-            "PySpark": 2
-        },
-        "mobile": {
-            "Android": 3,
-            "Kotlin": 3,
-            "Flutter": 2,
-            "Dart": 2,
-            "Swift": 1
-        },
-        "other": {
-            "Solidity": 3,
-            "Arduino": 2,
-            "Small Basic": 2,
-            "Scratch": 3,
-            "Redstone": 3
-        }
+        "main stack": [
+            "Python",
+            "FastAPI",
+            "Postgres",
+            "Streamlit"
+        ],
+        "other tools": [
+            "Bash",
+            "GCP",
+            "Docker",
+            "Git"
+        ]
     }
 }

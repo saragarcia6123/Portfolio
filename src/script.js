@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Navigate after animation completes
                 setTimeout(() => {
                     window.location.href = href;
-                }, 800); // Match this to your animation duration
+                }, 400); // Match this to your animation duration
             }
         });
     });
