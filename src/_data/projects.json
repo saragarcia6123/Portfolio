@@ -101,6 +101,17 @@
         ]
     },
     {
+        "name": "Bible Verse Twitter Bot",
+        "url": "https://github.com/saragarcia6123/bible-verse-tweeter",
+        "description": "A Twitter (X) bot that posts a random verse from the bible. Integrated with Cloud Cronjob to run on a regular schedule.",
+        "tags": [
+            "Python",
+            "Bot",
+            "API",
+            "Cron"
+        ]
+    },
+    {
         "name": "Keras Car Price Regression",
         "url": "https://github.com/saragarcia6123/Keras-Regression",
         "description": "Car Price Regression Model in Jupyter using Keras neural networks ",
@@ -173,18 +184,6 @@
             "DataScience",
             "BeautifulSoup",
             "Databases"
-        ]
-    },
-    {
-        "name": "Twitter Bot",
-        "url": "https://github.com/saragarcia6123/twitter-bot",
-        "description": "A Twitter post bot that reads from Google Sheets.",
-        "tags": [
-            "Python",
-            "Bot",
-            "API",
-            "GCP",
-            "Parsing"
         ]
     },
     {
