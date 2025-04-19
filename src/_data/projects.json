@@ -1,7 +1,7 @@
 [
     {
         "name": "Meteorology Dashboard",
-        "url": "https://proyectometeorologico.streamlit.app/ML-Modelos",
+        "url": "https://github.com/HAB-Equipo-Meteorologia/Proyecto-Meteorologico",
         "description": "Spanish Weather Data Analysis Dashboard with AEMET API featuring ML predictions for daily temperature forecast.",
         "tags": [
             "ML",
@@ -28,6 +28,18 @@
         ]
     },
     {
+        "name": "Expression Evaluator",
+        "url": "https://github.com/saragarcia6123/expression_evaluator",
+        "description": "A calculator-style mathematical expression evaluator that parses and computes results from user input strings.",
+        "tags": [
+            "Mathematics",
+            "DataStructures",
+            "Algorithms",
+            "Parsing",
+            "Compilers"
+        ]
+    },
+    {
         "name": "Iris Predictions",
         "url": "https://github.com/saragarcia6123/ML-Predictions",
         "description": "Containerized full-stack app with remote database and file hosting with ML predictions served with FastAPI and fetched from Streamlit.",
@@ -40,18 +52,6 @@
             "Docker",
             "GCP",
             "PostgreSQL"
-        ]
-    },
-    {
-        "name": "Expression Evaluator",
-        "url": "https://github.com/saragarcia6123/expression_evaluator",
-        "description": "A calculator-style mathematical expression evaluator that parses and computes results from user input strings.",
-        "tags": [
-            "Mathematics",
-            "DataStructures",
-            "Algorithms",
-            "Parsing",
-            "Compilers"
         ]
     },
     {

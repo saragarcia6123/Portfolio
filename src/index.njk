@@ -3,12 +3,12 @@ layout: layout.njk
 title: Home
 ---
 <div class="home-content page-content">
-    <div id="landing">
+    <div id="landing" class="section">
         <div id="landing-left">
             <div class="pfp-container">
                 <div class="pfp-border">
                     <div class="pfp-inner">
-                        <img src="res/images/pfp.jpg">
+                        <img src="res/images/pfp.jpg" alt="Close-up of my face">
                     </div>
                 </div>
             </div>
@@ -20,61 +20,61 @@ title: Home
                 </div>
                 <div class="info-container">
                     <p class="name">SARA GARCIA</p>
-                    <p>Backend Python Developer</p>
+                    <p>Backend Engineer</p>
+                    <div class="location-container">
+                        <div class="location">
+                            <img class="location-icon" src="res/icons/home.svg" alt="Location pin icon.">
+                            <span>UK</span>
+                        </div>
+                        <div class="location">
+                            <img class="location-icon" src="res/icons/location.svg" alt="House icon.">
+                            <span>Spain</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="bracket bracket-right">
                     <p>}</p>
                 </div>
             </div>
-            <div class="location-container">
-                <div class="location">
-                    <img class="location-icon" src="res/icons/home.svg">
-                    <span>UK</span>
-                </div>
-                <div class="location">
-                    <img class="location-icon" src="res/icons/location.svg">
-                    <span>Spain</span>
-                </div>
-            </div>
         </div>
     </div>
-    <div class="intro">
+    <div class="intro section">
         <p>
             Self-taught software engineer with a focus on building things that not only work well, but stay
             secure, flexible and maintainable. I enjoy problem-solving and making complex systems simple.
         </p>
     </div>
-    <div class="quote-container">
+    <div class="quote-container section">
         <div class="quote">
-            <p>I’m not just about getting things to run;</p>
-            <p>I care about clean, efficient, and scalable solutions.</p>
+            <p class="dollar">$</p>
+            <p>I’m not just about getting things to run;<br> I care about clean, efficient, and scalable solutions.</p>
         </div>
     </div>
-    <div class="socials">
+    <div class="socials section">
         <h3 style="font-style: italic;">Let's connect... </h3>
         <div id="social-icons">
             <a class="badge social-icon" target="_blank" href="https://github.com/saragarcia6123">
                 <div class="icon-container github-logo">
-                    <img src="res/icons/github.svg">
+                    <img src="res/icons/github.svg" alt="GitHub Logo.">
                 </div>
                 <p>GITHUB</p>
             </a>
             <a class="badge social-icon" target="_blank" href="https://linkedin.com/in/saragarcia6123">
                 <div class="icon-container linkedin-logo">
-                    <img src="res/icons/linkedin.svg">
+                    <img src="res/icons/linkedin.svg" alt="LinkedIn Logo.">
                 </div>
                 <p>LINKEDIN</p>
             </a>
             <a class="badge social-icon" target="_blank" href="mailto:saragarcia6123@gmail.com">
                 <div class="icon-container email-icon">
-                    <img src="res/icons/email.svg">
+                    <img src="res/icons/email.svg" alt="Email icon.">
                 </div>
                 <p>EMAIL</p>
             </a>
         </div>
     </div>
-    <hr class="hr-splitter">
-    <div class="technologies">
+    <hr class="hr-splitter section">
+    <div class="technologies section">
         {% for groupName, technologies in technologies.groups %}
         <div class="tech-group">
             <div class="group-header">
@@ -82,25 +82,23 @@ title: Home
             </div>
             <div class="badges">
                 {% for tech in technologies %}
-                <a class="badge tech-badge">
+                <div class="badge tech-badge">
                     <div class="icon-container">
-                        <img src="/res/icons/{{ tech | lower }}.svg">
+                        <img src="/res/icons/{{ tech | lower }}.svg" alt="{{ tech }} logo.">
                     </div>
                     <div class="badge-name">
                         <p>{{ tech }}</p>
                     </div>
-                </a>
+                </div>
                 {% endfor %}
             </div>
         </div>
         {% endfor %}
     </div>
-    <div class="quote-container">
+    <div class="quote-container section">
         <div class="quote">
-            <p>"An idiot admires complexity, a genius admires simplicity."</p>
-        </div>
-        <div class="author">
-            <p>- Terry Davis</p>
+            <p class="dollar">$</p>
+            <p>"An idiot admires complexity, a genius admires simplicity." <br> - Terry Davis</p>
         </div>
     </div>
 </div>

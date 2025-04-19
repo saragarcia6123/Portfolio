@@ -1,53 +1,3 @@
-const searchForm = document.getElementById('searchForm');
-const searchInput = document.getElementById('searchInput');
-const navItems = document.querySelectorAll('.nav-item:not(.search-container)');
-const searchContainer = document.getElementById('searchContainer');
-const searchIcon = document.getElementById('searchIcon');
-
-var searchActive = false;
-
-function toggleSearchBar(val) {
-    searchActive = val;
-
-    if (searchActive === true) {
-        searchForm.style.display = 'flex';
-        navItems.forEach(item => {
-            item.style.display = 'none';
-        });
-        searchInput.focus();
-        searchIcon.style.display = 'none'
-    } else {
-        searchForm.style.display = 'none';
-        searchIcon.style.display = 'flex'
-        navItems.forEach(item => {
-            item.style.display = 'inline-block';
-        });
-    }
-}
-
-function submitSearch(event) {
-    if (event.type === 'click' || event.key === 'Enter') {
-        event.preventDefault();
-        var searchValue = document.getElementById('searchInput').value;
-
-        // Update the form's action URL to include "search?q=<input_value>"
-        var form = document.getElementById('searchForm');
-        form.action = '/search.html?q=' + encodeURIComponent(searchValue);
-
-        form.submit();
-    }
-}
-
-// document.addEventListener('click', function (event) {
-//     if (searchContainer.contains(event.target)) {
-//         if (!searchActive) {
-//             toggleSearchBar(true);
-//         }
-//     } else {
-//         toggleSearchBar(false);
-//     }
-// });
-
 // Define the page order for determining navigation direction
 const pageOrder = ['home', 'projects', 'articles'];
 
@@ -55,6 +5,8 @@ const pageOrder = ['home', 'projects', 'articles'];
 document.addEventListener('DOMContentLoaded', function () {
 
     const pageContent = document.querySelector('.page-content');
+    const homeContent = document.querySelector(".home-content");
+
     if (pageContent) {
         // Get current page path
         const path = window.location.pathname;
@@ -136,7 +88,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    document.querySelector(".home-content").classList.add("fade-in");
+    if (homeContent) {
+        homeContent.classList.add("fade-in");
+    }
+
 });
 
 // Helper function to determine direction based on page order
