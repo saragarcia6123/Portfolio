@@ -42,12 +42,6 @@ title: Home
             secure, flexible and maintainable. I enjoy problem-solving and making complex systems simple.
         </p>
     </div>
-    <div class="quote-container section">
-        <div class="quote">
-            <p class="dollar">$</p>
-            <p>I’m not just about getting things to run;<br> I care about clean, efficient, and scalable solutions.</p>
-        </div>
-    </div>
     <div class="socials section">
         <h3>Let's connect... </h3>
         <div id="social-icons">
@@ -77,7 +71,12 @@ title: Home
             </a>
         </div>
     </div>
-    <hr class="hr-splitter section">
+    <div class="quote-container section">
+        <div class="quote">
+            <p class="dollar">$</p>
+            <p>I’m not just about getting things to run;<br> I care about clean, efficient, and scalable solutions.</p>
+        </div>
+    </div>
     <div class="technologies section">
         {% for groupName, technologies in technologies.groups %}
         <div class="tech-group">
@@ -97,6 +96,7 @@ title: Home
                 {% endfor %}
             </div>
         </div>
+        <br>
         {% endfor %}
     </div>
     <div class="quote-container section">
@@ -117,19 +117,21 @@ title: Home
                     <h3 class="event-title">{{ event.title }}</h3>
                     <h4 class="event-location">{{ event.location }}</h4>
                     <p class="event-date">{{ event.from }} - {{ event.to }}</p>
-                    <hr>
-                    <ul class="event-projects">
-                        {% for project in event.projects %}
-                        <div class="project">
-                            <h4 class="project-title">{{ project.title }}</h4>
-                            <p class="project-description">{{ project.description }}</p>
-                        </div>
-                        {% endfor %}
-                    </ul>
+                    <div class="expanded-content">
+                        <hr>
+                        <ul class="event-projects">
+                            {% for project in event.projects %}
+                            <div class="project">
+                                <h4 class="project-title">{{ project.title }}</h4>
+                                <p class="project-description">{{ project.description }}</p>
+                            </div>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
                 {% endfor %}
                 <div class="marker"></div>
-                <div class="quote-container event-card">
+                <div class="quote-container to-be-continued">
                     <div class="quote">
                         <p class="dollar">$</p>
                         <p>To be continued...</p>

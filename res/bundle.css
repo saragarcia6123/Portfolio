@@ -44,12 +44,11 @@ main {
 
 ::-webkit-scrollbar {
     /* HIDES DEFAULT SCROLLBAR */
-    width: 8px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
     background: rgb(255, 255, 255, 0.2);
-    border-radius: 16px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -147,7 +146,7 @@ hr {
 .section {
     width: 100%;
     max-width: 800px;
-    margin: 24px 0;
+    margin: 16px 0;
 }
 
 .page-content {
@@ -246,7 +245,7 @@ hr {
     border: 2px solid rgb(255, 255, 255, 0.5);
     border-radius: 8px;
     width: 70%;
-    max-width: 120px;
+    max-width: 140px;
     aspect-ratio: 1;
 }
 
@@ -324,7 +323,6 @@ hr {
 }
 
 .socials {
-    margin-top: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -393,7 +391,7 @@ hr {
 
 .quote-container {
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 4px !important;
     align-content: center;
     display: flex;
     flex-direction: column;
@@ -462,9 +460,11 @@ hr {
 }
 
 .intro {
-    padding: 8px;
+    box-sizing: border-box;
+    padding: 32px 16px;
     line-height: 32px;
     text-align: justify;
+    font-size: 1.1em;
 }
 
 .hr-splitter {
@@ -472,14 +472,15 @@ hr {
 }
 
 .technologies {
-    margin-top: 20px;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 32px;
+    margin-bottom: 0;
 }
 
 .tech-group {
+    margin-top: 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -488,7 +489,7 @@ hr {
 }
 
 .group-header {
-    padding: 40px 16px 12px 0px;
+    margin-bottom: 16px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -506,7 +507,7 @@ hr {
 
 .tech-badge {
     width: 140px;
-    margin: 12px 8px;
+    margin: 12px 0px;
     height: 40px;
     padding: 10px 16px;
     border: 1px solid transparent;
@@ -721,12 +722,18 @@ strong {
         text-align: left !important;
     }
 
+    .event-card {
+        padding: 20px !important;
+    }
+
 }
 
 @media screen and (max-width: 480px) {
 
     .intro {
-        margin: 8px;
+        margin-top: 0;
+        margin-bottom: 16px;
+        padding: 4px;
         line-height: 24px;
     }
 
@@ -787,8 +794,12 @@ strong {
     margin-bottom: 8px;
 }
 
+.timeline {
+    margin-top: 32px;
+}
+
 .timeline .group-header {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
 }
 
 .timeline-container {
@@ -840,6 +851,10 @@ strong {
     padding: 0;
 }
 
+.event-projects> :last-child.project {
+    margin-bottom: 0;
+}
+
 .event-card hr {
     margin: 16px 0;
 }
@@ -860,6 +875,16 @@ strong {
 }
 
 .event-card,
-.event-card.quote-container {
-    margin: 24px 0px 24px 28px;
+.to-be-continued {
+    margin: 24px 0px 24px 28px !important;
+}
+
+.event-card:hover {
+    border-color: white;
+    cursor: pointer;
+}
+
+.expanded-content {
+    visibility: hidden;
+    height: 0;
 }

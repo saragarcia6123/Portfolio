@@ -92,6 +92,23 @@ document.addEventListener('DOMContentLoaded', function () {
         homeContent.classList.add("fade-in");
     }
 
+    const eventCards = document.querySelectorAll('.event-card');
+
+    eventCards.forEach((element) => {
+        element.addEventListener('click', function () {
+            let expandedContent = element.querySelector(".expanded-content");
+            const currentVisibility = window.getComputedStyle(expandedContent).visibility;
+
+            if (currentVisibility === "hidden") {
+                expandedContent.style.visibility = "visible";
+                expandedContent.style.height = "auto";
+            } else {
+                expandedContent.style.visibility = "hidden";
+                expandedContent.style.height = "0";
+            }
+        });
+    });
+
 });
 
 // Helper function to determine direction based on page order
