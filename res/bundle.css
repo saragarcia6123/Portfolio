@@ -174,7 +174,10 @@ hr {
     animation-name: slideOutLeft;
 }
 
-/* Keyframe definitions */
+.show-immediately {
+    animation-name: showImmediately;
+}
+
 @keyframes slideInRight {
     from {
         transform: translateX(100%);
@@ -220,6 +223,16 @@ hr {
     to {
         transform: translateX(-100%);
         opacity: 0;
+    }
+}
+
+@keyframes showImmediately {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 

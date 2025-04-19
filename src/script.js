@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (direction === 'left') {
                 pageContent.classList.add('slide-in-left');
             }
+        } else {
+            pageContent.classList.add('show-immediately');
         }
 
         // Store current page for next navigation
