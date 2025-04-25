@@ -200,4 +200,21 @@ title: Password Security Best Practices - Beyond Basic Hashing
         <p>So yeah, don't be that guy, and do security right for a change. Your boss will be proud, and your mom will be
             too.</p>
     </li>
+
+    <li>
+        <h2>11. Bonus - How to hash and dehash a password in Python using bcrypt</h2>
+
+        <div class="code-snippet">
+            def hash_password(password: str) -> str:<br>
+            	salt = bcrypt.gensalt()<br>
+            	hashed_password = bcrypt.hashpw(password.encode(), salt)<br>
+            	return hashed_password.decode()
+        </div>
+
+        <div class="code-snippet">
+            def verify_password(password: str, hashed_password: str) -> bool:<br>
+                return bcrypt.checkpw(password.encode(), hashed_password.encode())
+        </div>
+    </li>
+
 </ol>
