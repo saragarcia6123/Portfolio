@@ -1,5 +1,19 @@
 [
     {
+        "name": "Sentiverse",
+        "url": "https://github.com/saragarcia6123/Sentiverse",
+        "description": "A full-stack application that analyzes song lyrics and classifies them into emotionally opposite pairs.",
+        "tags": [
+            "Python",
+            "Typescript",
+            "FastAPI",
+            "React",
+            "TailwindCSS",
+            "GraphQL",
+            "PyTorch"
+        ]
+    },
+    {
         "name": "Meteorology Dashboard",
         "url": "https://github.com/HAB-Equipo-Meteorologia/Proyecto-Meteorologico",
         "description": "Spanish Weather Data Analysis Dashboard with AEMET API featuring ML predictions for daily temperature forecast.",
