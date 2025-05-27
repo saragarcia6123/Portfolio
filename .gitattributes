@@ -1,1 +1,2 @@
 *.njk linguist-vendored
+*.css linguist-vendored
